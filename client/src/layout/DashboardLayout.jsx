@@ -1,10 +1,11 @@
+import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
-export default function DashboardLayout({ children }) {
-  const { user } = useSelector((s) => s.auth);
+export default function DashboardLayout() {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   return (
@@ -23,8 +24,8 @@ export default function DashboardLayout({ children }) {
             Logout
           </button>
 
-          {/* Render page content */}
-          {children}
+          {/* Render nested dashboard pages */}
+          <Outlet />
         </main>
       </div>
     </div>
