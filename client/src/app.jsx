@@ -1,47 +1,38 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import AdminDashboard from "./pages/dashboard/AdminDashboard";
-import FacultyDashboard from "./pages/dashboard/FacultyDashboard";
-import StudentDashboard from "./pages/dashboard/StudentDashboard";
-import RoleRoute from "./router/RoleRoute";
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        {/* Auth */}
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-
-        {/* Protected Dashboards */}
+        <Route path="/" element={<Landing />} />
         <Route
-          path="/dashboard/admin"
+          path="/home"
           element={
-            <RoleRoute allowedRoles={["admin"]}>
-              <AdminDashboard />
-            </RoleRoute>
+            <h1 className="text-center mt-20 text-3xl">Home Page</h1>
           }
         />
         <Route
-          path="/dashboard/faculty"
+          path="/features"
           element={
-            <RoleRoute allowedRoles={["faculty"]}>
-              <FacultyDashboard />
-            </RoleRoute>
+            <h1 className="text-center mt-20 text-3xl">Features Page</h1>
           }
         />
         <Route
-          path="/dashboard/student"
+          path="/about"
           element={
-            <RoleRoute allowedRoles={["student"]}>
-              <StudentDashboard />
-            </RoleRoute>
+            <h1 className="text-center mt-20 text-3xl">About Page</h1>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <h1 className="text-center mt-20 text-3xl">Contact Page</h1>
           }
         />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
-
-export default App;
